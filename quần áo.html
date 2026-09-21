@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LAVÉ - Thời Trang Hiện Đại</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f8f7f5;
+            color: #222;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            height: 75px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 4px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 30px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #c58b55;
+        }
+
+        .cart {
+            margin-left: 25px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 70px 10%;
+            background: linear-gradient(
+                110deg,
+                #e9dfd2 0%,
+                #f8f5f0 55%,
+                #ded4c9 100%
+            );
+        }
+
+        .hero-content {
+            width: 55%;
+        }
+
+        .hero-content small {
+            color: #9a6d43;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            line-height: 1.05;
+            margin: 20px 0;
+            max-width: 650px;
+        }
+
+        .hero h1 span {
+            color: #a36f40;
+        }
+
+        .hero p {
+            color: #666;
+            max-width: 520px;
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #222;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #a36f40;
+            transform: translateY(-2px);
+        }
+
+        .hero-model {
+            width: 40%;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fashion-shape {
+            width: 270px;
+            height: 390px;
+            background: linear-gradient(
+                145deg,
+                #252525,
+                #555
+            );
+            border-radius: 130px 130px 25px 25px;
+            position: relative;
+            box-shadow: 25px 25px 45px rgba(0,0,0,0.2);
+        }
+
+        .fashion-shape::before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #f0c5a5;
+            border-radius: 50%;
+            top: -55px;
+            left: 85px;
+        }
+
+        .fashion-shape::after {
+            content: "LAVÉ";
+            position: absolute;
+            color: white;
+            font-size: 25px;
+            letter-spacing: 5px;
+            top: 170px;
+            left: 88px;
+        }
+
+        /* ================= PRODUCTS ================= */
+
+        .products {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title small {
+            color: #a36f40;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin: 12px 0;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            height: 330px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .product-image span {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #222;
+            color: white;
+            padding: 7px 12px;
+            font-size: 11px;
+        }
+
+        /* Quần áo giả lập bằng CSS */
+
+        .shirt {
+            width: 180px;
+            height: 220px;
+            position: relative;
+            clip-path: polygon(
+                25% 0,
+                42% 10%,
+                58% 10%,
+                75% 0,
+                100% 28%,
+                78% 43%,
+                70% 32%,
+                70% 100%,
+                30% 100%,
+                30% 32%,
+                22% 43%,
+                0 28%
+            );
+            box-shadow: 0 15px 20px rgba(0,0,0,0.15);
+        }
+
+        .shirt-white {
+            background: #f4f4f4;
+        }
+
+        .shirt-black {
+            background: #202020;
+        }
+
+        .shirt-brown {
+            background: #9a7251;
+        }
+
+        .shirt-blue {
+            background: #587b91;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            color: #a36f40;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        /* ================= CATEGORIES ================= */
+
+        .categories {
+            padding: 30px 8% 80px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .category {
+            height: 220px;
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.25);
+        }
+
+        .category h3 {
+            position: relative;
+            z-index: 2;
+            font-size: 25px;
+        }
+
+        .cat-men {
+            background: linear-gradient(
+                135deg,
+                #30343b,
+                #777f89
+            );
+        }
+
+        .cat-women {
+            background: linear-gradient(
+                135deg,
+                #a47d70,
+                #e0b7a9
+            );
+        }
+
+        .cat-accessories {
+            background: linear-gradient(
+                135deg,
+                #8b765b,
+                #d0b48b
+            );
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            background: #222;
+            color: white;
+            padding: 65px 8%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* ================= NEWSLETTER ================= */
+
+        .newsletter {
+            padding: 80px 20px;
+            text-align: center;
+            background: #eee5db;
+        }
+
+        .newsletter h2 {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .newsletter p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .newsletter input {
+            width: 300px;
+            max-width: 80%;
+            padding: 14px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .newsletter button {
+            padding: 14px 25px;
+            border: none;
+            background: #222;
+            color: white;
+            cursor: pointer;
+        }
+
+        .newsletter button:hover {
+            background: #a36f40;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111;
+            color: #aaa;
+            padding: 35px 8%;
+            text-align: center;
+        }
+
+        footer .footer-logo {
+            color: white;
+            font-size: 25px;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-model {
+                width: 40%;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 0 5%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 60px 6%;
+            }
+
+            .hero-content {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-model {
+                width: 100%;
+                height: 350px;
+            }
+
+            .fashion-shape {
+                transform: scale(0.8);
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter input {
+                width: 70%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            LAVÉ
+        </div>
+
+        <nav>
+            <a href="#home">Trang chủ</a>
+            <a href="#products">Sản phẩm</a>
+            <a href="#categories">Danh mục</a>
+            <a href="#about">Về chúng tôi</a>
+            <a href="#contact">Liên hệ</a>
+
+            <span class="cart">
+                🛒
+            </span>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <small>BỘ SƯU TẬP 2026</small>
+
+            <h1>
+                Thời trang
+                <span>theo phong cách của bạn.</span>
+            </h1>
+
+            <p>
+                Khám phá những thiết kế thời trang hiện đại,
+                tối giản và phù hợp với phong cách sống của bạn.
+            </p>
+
+            <a href="#products" class="btn">
+                Xem bộ sưu tập
+            </a>
+
+        </div>
+
+        <div class="hero-model">
+            <div class="fashion-shape"></div>
+        </div>
+
+    </section>
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section class="products" id="products">
+
+        <div class="section-title">
+
+            <small>SẢN PHẨM NỔI BẬT</small>
+
+            <h2>Bộ sưu tập mới</h2>
+
+            <p>
+                Những thiết kế được yêu thích trong mùa này
+            </p>
+
+        </div>
+
+
+        <div class="product-grid">
+
+            <!-- Sản phẩm 1 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    <span>MỚI</span>
+
+                    <div class="shirt shirt-white"></div>
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Áo Thun Basic</h3>
+
+                    <p>
+                        Cotton cao cấp • Trắng
+                    </p>
+
+                    <div class="price">
+                        299.000đ
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Sản phẩm 2 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    <span>BÁN CHẠY</span>
+
+                    <div class="shirt shirt-black"></div>
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Áo Thun Essential</h3>
+
+                    <p>
+                        Cotton mềm • Đen
+                    </p>
+
+                    <div class="price">
+                        329.000đ
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Sản phẩm 3 -->
+
+            <div class="product">
+
+                <div class="product-image">
+
+                    <div class="shirt shirt-brown"></div>
+
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Áo Polo Classic</h3>
+
+                    <p>
+                        Form regular • Nâu
+                    </p>
+
+                    <div class="price">
+                        449.000đ
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Sản phẩm 4 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    <span>MỚI</span>
+
+                    <div class="shirt shirt-blue"></div>
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Áo Polo Premium</h3>
+
+                    <p>
+                        Vải cao cấp • Xanh
+                    </p>
+
+                    <div class="price">
+                        499.000đ
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section class="categories" id="categories">
+
+        <div class="section-title">
+
+            <small>KHÁM PHÁ</small>
+
+            <h2>Danh mục sản phẩm</h2>
+
+        </div>
+
+
+        <div class="category-grid">
+
+            <div class="category cat-men">
+                <h3>Thời trang Nam</h3>
+            </div>
+
+            <div class="category cat-women">
+                <h3>Thời trang Nữ</h3>
+            </div>
+
+            <div class="category cat-accessories">
+                <h3>Phụ kiện</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="features" id="about">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                👕
+            </div>
+
+            <h3>Chất lượng cao</h3>
+
+            <p>
+                Sản phẩm được lựa chọn với chất liệu
+                phù hợp và thiết kế chú trọng sự thoải mái.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🚚
+            </div>
+
+            <h3>Giao hàng nhanh</h3>
+
+            <p>
+                Đóng gói cẩn thận và giao hàng
+                đến nhiều tỉnh thành.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔄
+            </div>
+
+            <h3>Đổi trả dễ dàng</h3>
+
+            <p>
+                Hỗ trợ đổi sản phẩm theo chính sách
+                của cửa hàng.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= NEWSLETTER ================= -->
+
+    <section class="newsletter">
+
+        <h2>Đăng ký nhận tin</h2>
+
+        <p>
+            Nhận thông tin về sản phẩm mới và chương trình ưu đãi.
+        </p>
+
+        <input
+            type="email"
+            placeholder="Nhập email của bạn"
+        >
+
+        <button>
+            Đăng ký
+        </button>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer id="contact">
+
+        <div class="footer-logo">
+            LAVÉ
+        </div>
+
+        <p>
+            © 2026 LAVÉ Fashion. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
