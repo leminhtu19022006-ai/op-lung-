@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASELY - Ốp Lưng Điện Thoại</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f7f7;
+            color: #222;
+        }
+
+        /* HEADER */
+        header {
+            background: #111;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 28px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #ff6b81;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 10%;
+            background: linear-gradient(135deg, #ffe3e8, #f5f5f5);
+        }
+
+        .hero-content {
+            max-width: 550px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #ff526d;
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #111;
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #ff526d;
+            transform: translateY(-2px);
+        }
+
+        .hero-phone {
+            width: 240px;
+            height: 430px;
+            background: linear-gradient(145deg, #ff758c, #ff416c);
+            border-radius: 38px;
+            box-shadow: 20px 25px 50px rgba(0,0,0,0.2);
+            transform: rotate(8deg);
+            position: relative;
+        }
+
+        .hero-phone::before {
+            content: "CASELY";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-8deg);
+            color: rgba(255,255,255,0.8);
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* PRODUCTS */
+        .products {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            height: 270px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .case {
+            width: 130px;
+            height: 220px;
+            border-radius: 25px;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .case::after {
+            content: "";
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background: #222;
+            border-radius: 10px;
+            top: 14px;
+            right: 14px;
+        }
+
+        .pink {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        }
+
+        .blue {
+            background: linear-gradient(135deg, #667eea, #64b6ff);
+        }
+
+        .black {
+            background: linear-gradient(135deg, #111, #444);
+        }
+
+        .green {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 8px;
+            font-size: 19px;
+        }
+
+        .product-info p {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #ff526d;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* FEATURES */
+        .features {
+            background: #111;
+            color: white;
+            padding: 60px 8%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature {
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #080808;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                text-align: center;
+                flex-direction: column;
+                gap: 60px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 50px 7%;
+            }
+
+            .hero-phone {
+                width: 190px;
+                height: 340px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">CASELY</div>
+
+        <nav>
+            <a href="#home">Trang chủ</a>
+            <a href="#products">Sản phẩm</a>
+            <a href="#about">Giới thiệu</a>
+            <a href="#contact">Liên hệ</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+            <h1>Style your <span>phone.</span></h1>
+
+            <p>
+                Bộ sưu tập ốp lưng hiện đại, cá tính và thời trang.
+                Bảo vệ điện thoại của bạn theo cách riêng.
+            </p>
+
+            <a href="#products" class="btn">
+                Khám phá bộ sưu tập
+            </a>
+        </div>
+
+        <div class="hero-phone"></div>
+
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="products" id="products">
+
+        <div class="section-title">
+            <h2>Bộ sưu tập nổi bật</h2>
+            <p>Những mẫu ốp lưng được yêu thích nhất</p>
+        </div>
+
+        <div class="product-grid">
+
+            <!-- PRODUCT 1 -->
+            <div class="product">
+                <div class="product-image">
+                    <div class="case pink"></div>
+                </div>
+
+                <div class="product-info">
+                    <h3>Pink Minimal</h3>
+                    <p>Ốp lưng silicone mềm mại</p>
+                    <div class="price">149.000đ</div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 2 -->
+            <div class="product">
+                <div class="product-image">
+                    <div class="case blue"></div>
+                </div>
+
+                <div class="product-info">
+                    <h3>Ocean Blue</h3>
+                    <p>Thiết kế xanh gradient</p>
+                    <div class="price">169.000đ</div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 3 -->
+            <div class="product">
+                <div class="product-image">
+                    <div class="case black"></div>
+                </div>
+
+                <div class="product-info">
+                    <h3>Midnight Black</h3>
+                    <p>Phong cách tối giản, mạnh mẽ</p>
+                    <div class="price">159.000đ</div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 4 -->
+            <div class="product">
+                <div class="product-image">
+                    <div class="case green"></div>
+                </div>
+
+                <div class="product-info">
+                    <h3>Fresh Green</h3>
+                    <p>Màu xanh trẻ trung, nổi bật</p>
+                    <div class="price">149.000đ</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="about">
+
+        <div class="feature">
+            <div class="feature-icon">🛡️</div>
+            <h3>Bảo vệ tốt</h3>
+            <p>
+                Chất liệu chắc chắn giúp hạn chế trầy xước
+                và va đập cho điện thoại.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">✨</div>
+            <h3>Thiết kế đẹp</h3>
+            <p>
+                Nhiều phong cách từ tối giản đến cá tính,
+                phù hợp với mọi người.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🚚</div>
+            <h3>Giao hàng nhanh</h3>
+            <p>
+                Đóng gói cẩn thận và hỗ trợ giao hàng
+                đến nhiều khu vực.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        © 2026 CASELY — Phone Cases & Accessories
+    </footer>
+
+</body>
+</html>
